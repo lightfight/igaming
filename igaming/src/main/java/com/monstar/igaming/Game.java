@@ -20,4 +20,9 @@ public class Game {
 		MonsterVO mvo = new MonsterVO(100); // 会调用父类的无参构造方法
 		System.out.println(mvo.getSkill());
 	}
+	
+	@Test
+	public void getClazzName(){
+		System.out.println(MonsterVO.class);
+	}
 }
