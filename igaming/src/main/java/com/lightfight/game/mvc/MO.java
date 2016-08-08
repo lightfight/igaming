@@ -1,4 +1,4 @@
-package com.monstar.igaming.mvc;
+package com.lightfight.game.mvc;
 
 public class MO {
 	

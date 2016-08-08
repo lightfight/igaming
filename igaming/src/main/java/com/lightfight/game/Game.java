@@ -1,9 +1,9 @@
-package com.monstar.igaming;
+package com.lightfight.game;
 
 import org.junit.Test;
 
-import com.monstar.igaming.vo.HeroVO;
-import com.monstar.igaming.vo.MonsterVO;
+import com.lightfight.game.vo.HeroVO;
+import com.lightfight.game.vo.MonsterVO;
 
 public class Game {
 

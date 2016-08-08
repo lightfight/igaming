@@ -1,4 +1,4 @@
-package com.monstar.igaming.vo;
+package com.lightfight.game.vo;
 
 public class MonsterVO extends HeroVO {
 
