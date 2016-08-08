@@ -1,4 +1,4 @@
-package com.monstar.igaming.algorithm;
+package com.lightfight.game.algorithm;
 
 import java.util.Arrays;
 
