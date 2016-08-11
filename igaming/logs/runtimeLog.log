@@ -1,0 +1,106 @@
+2016-08-11 15:46:00,274 [FILE] INFO  com.lightfight.game.logback.LogbackTest.32 - LogbackConfig init successfully!
+2016-08-11 15:46:50,308 [FILE] INFO  com.lightfight.game.logback.LogbackTest.32 - LogbackConfig init successfully!
+2016-08-11 15:47:59,315 [FILE] INFO  com.lightfight.game.logback.LogbackTest.77 - infos
+2016-08-11 15:47:59,315 [FILE] INFO  com.lightfight.game.logback.LogbackTest.79 - isInfoEnabled
+2016-08-11 15:47:59,315 [FILE] WARN  com.lightfight.game.logback.LogbackTest.82 - warns
+2016-08-11 15:47:59,316 [FILE] WARN  com.lightfight.game.logback.LogbackTest.84 - isWarnEnabled
+2016-08-11 15:47:59,316 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - errors
+2016-08-11 15:47:59,316 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:48:20,322 [FILE] INFO  com.lightfight.game.logback.LogbackTest.32 - LogbackConfig init successfully!
+2016-08-11 15:48:59,299 [FILE] INFO  com.lightfight.game.logback.LogbackTest.32 - LogbackConfig init successfully!
+2016-08-11 15:49:20,367 [FILE] INFO  com.lightfight.game.logback.LogbackTest.32 - LogbackConfig init successfully!
+2016-08-11 15:49:34,963 [FILE] INFO  com.lightfight.game.logback.LogbackTest.77 - info
+2016-08-11 15:49:34,963 [FILE] INFO  com.lightfight.game.logback.LogbackTest.79 - isInfoEnabled
+2016-08-11 15:49:34,963 [FILE] WARN  com.lightfight.game.logback.LogbackTest.82 - warn
+2016-08-11 15:49:34,964 [FILE] WARN  com.lightfight.game.logback.LogbackTest.84 - isWarnEnabled
+2016-08-11 15:49:34,964 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:49:34,964 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:49:43,210 [FILE] INFO  com.lightfight.game.logback.LogbackTest.77 - info
+2016-08-11 15:49:43,210 [FILE] INFO  com.lightfight.game.logback.LogbackTest.79 - isInfoEnabled
+2016-08-11 15:49:43,210 [FILE] WARN  com.lightfight.game.logback.LogbackTest.82 - warn
+2016-08-11 15:49:43,210 [FILE] WARN  com.lightfight.game.logback.LogbackTest.84 - isWarnEnabled
+2016-08-11 15:49:43,210 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:49:43,211 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:49:47,297 [FILE] INFO  com.lightfight.game.logback.LogbackTest.77 - info
+2016-08-11 15:49:47,298 [FILE] INFO  com.lightfight.game.logback.LogbackTest.79 - isInfoEnabled
+2016-08-11 15:49:47,298 [FILE] WARN  com.lightfight.game.logback.LogbackTest.82 - warn
+2016-08-11 15:49:47,298 [FILE] WARN  com.lightfight.game.logback.LogbackTest.84 - isWarnEnabled
+2016-08-11 15:49:47,298 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:49:47,298 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:50:16,370 [FILE] INFO  com.lightfight.game.logback.LogbackTest.32 - LogbackConfig init successfully!
+2016-08-11 15:51:13,658 [FILE] INFO  com.lightfight.game.logback.LogbackTest.32 - LogbackConfig init successfully!
+2016-08-11 15:51:20,123 [FILE] INFO  com.lightfight.game.logback.LogbackTest.77 - info
+2016-08-11 15:51:20,123 [FILE] INFO  com.lightfight.game.logback.LogbackTest.79 - isInfoEnabled
+2016-08-11 15:51:20,123 [FILE] WARN  com.lightfight.game.logback.LogbackTest.82 - warn
+2016-08-11 15:51:20,123 [FILE] WARN  com.lightfight.game.logback.LogbackTest.84 - isWarnEnabled
+2016-08-11 15:51:20,124 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:51:20,124 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:51:20,746 [FILE] INFO  com.lightfight.game.logback.LogbackTest.77 - info
+2016-08-11 15:51:20,746 [FILE] INFO  com.lightfight.game.logback.LogbackTest.79 - isInfoEnabled
+2016-08-11 15:51:20,747 [FILE] WARN  com.lightfight.game.logback.LogbackTest.82 - warn
+2016-08-11 15:51:20,747 [FILE] WARN  com.lightfight.game.logback.LogbackTest.84 - isWarnEnabled
+2016-08-11 15:51:20,747 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:51:20,747 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:51:24,802 [FILE] INFO  com.lightfight.game.logback.LogbackTest.77 - info
+2016-08-11 15:51:24,802 [FILE] INFO  com.lightfight.game.logback.LogbackTest.79 - isInfoEnabled
+2016-08-11 15:51:24,803 [FILE] WARN  com.lightfight.game.logback.LogbackTest.82 - warn
+2016-08-11 15:51:24,803 [FILE] WARN  com.lightfight.game.logback.LogbackTest.84 - isWarnEnabled
+2016-08-11 15:51:24,803 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:51:24,803 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:51:26,866 [FILE] INFO  com.lightfight.game.logback.LogbackTest.77 - info
+2016-08-11 15:51:26,866 [FILE] INFO  com.lightfight.game.logback.LogbackTest.79 - isInfoEnabled
+2016-08-11 15:51:26,866 [FILE] WARN  com.lightfight.game.logback.LogbackTest.82 - warn
+2016-08-11 15:51:26,866 [FILE] WARN  com.lightfight.game.logback.LogbackTest.84 - isWarnEnabled
+2016-08-11 15:51:26,866 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:51:26,866 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:51:27,154 [FILE] INFO  com.lightfight.game.logback.LogbackTest.77 - info
+2016-08-11 15:51:27,154 [FILE] INFO  com.lightfight.game.logback.LogbackTest.79 - isInfoEnabled
+2016-08-11 15:51:27,154 [FILE] WARN  com.lightfight.game.logback.LogbackTest.82 - warn
+2016-08-11 15:51:27,154 [FILE] WARN  com.lightfight.game.logback.LogbackTest.84 - isWarnEnabled
+2016-08-11 15:51:27,154 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:51:27,154 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:51:27,442 [FILE] INFO  com.lightfight.game.logback.LogbackTest.77 - info
+2016-08-11 15:51:27,442 [FILE] INFO  com.lightfight.game.logback.LogbackTest.79 - isInfoEnabled
+2016-08-11 15:51:27,442 [FILE] WARN  com.lightfight.game.logback.LogbackTest.82 - warn
+2016-08-11 15:51:27,442 [FILE] WARN  com.lightfight.game.logback.LogbackTest.84 - isWarnEnabled
+2016-08-11 15:51:27,442 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:51:27,442 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:51:27,618 [FILE] INFO  com.lightfight.game.logback.LogbackTest.77 - info
+2016-08-11 15:51:27,618 [FILE] INFO  com.lightfight.game.logback.LogbackTest.79 - isInfoEnabled
+2016-08-11 15:51:27,618 [FILE] WARN  com.lightfight.game.logback.LogbackTest.82 - warn
+2016-08-11 15:51:27,618 [FILE] WARN  com.lightfight.game.logback.LogbackTest.84 - isWarnEnabled
+2016-08-11 15:51:27,618 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:51:27,618 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:51:27,746 [FILE] INFO  com.lightfight.game.logback.LogbackTest.77 - info
+2016-08-11 15:51:27,746 [FILE] INFO  com.lightfight.game.logback.LogbackTest.79 - isInfoEnabled
+2016-08-11 15:51:27,746 [FILE] WARN  com.lightfight.game.logback.LogbackTest.82 - warn
+2016-08-11 15:51:27,746 [FILE] WARN  com.lightfight.game.logback.LogbackTest.84 - isWarnEnabled
+2016-08-11 15:51:27,746 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:51:27,746 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:51:27,906 [FILE] INFO  com.lightfight.game.logback.LogbackTest.77 - info
+2016-08-11 15:51:27,906 [FILE] INFO  com.lightfight.game.logback.LogbackTest.79 - isInfoEnabled
+2016-08-11 15:51:27,906 [FILE] WARN  com.lightfight.game.logback.LogbackTest.82 - warn
+2016-08-11 15:51:27,906 [FILE] WARN  com.lightfight.game.logback.LogbackTest.84 - isWarnEnabled
+2016-08-11 15:51:27,906 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:51:27,906 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:52:18,017 [FILE] INFO  com.lightfight.game.logback.LogbackTest.32 - LogbackConfig init successfully!
+2016-08-11 15:52:46,388 [FILE] INFO  com.lightfight.32 - LogbackConfig init successfully!
+2016-08-11 15:56:16,229 [FILE] INFO  com.lightfight.game.logback.LogbackTest.32 - LogbackConfig init successfully!
+2016-08-11 15:56:18,971 [FILE] INFO  com.lightfight.game.logback.LogbackTest.77 - info
+2016-08-11 15:56:18,971 [FILE] INFO  com.lightfight.game.logback.LogbackTest.79 - isInfoEnabled
+2016-08-11 15:56:18,972 [FILE] WARN  com.lightfight.game.logback.LogbackTest.82 - warn
+2016-08-11 15:56:18,972 [FILE] WARN  com.lightfight.game.logback.LogbackTest.84 - isWarnEnabled
+2016-08-11 15:56:18,972 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:56:18,972 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:56:22,594 [FILE] DEBUG com.lightfight.game.logback.LogbackTest.72 - debug
+2016-08-11 15:56:22,594 [FILE] DEBUG com.lightfight.game.logback.LogbackTest.74 - isDebugEnabled
+2016-08-11 15:56:22,595 [FILE] INFO  com.lightfight.game.logback.LogbackTest.77 - info
+2016-08-11 15:56:22,595 [FILE] INFO  com.lightfight.game.logback.LogbackTest.79 - isInfoEnabled
+2016-08-11 15:56:22,595 [FILE] WARN  com.lightfight.game.logback.LogbackTest.82 - warn
+2016-08-11 15:56:22,595 [FILE] WARN  com.lightfight.game.logback.LogbackTest.84 - isWarnEnabled
+2016-08-11 15:56:22,595 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:56:22,595 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:56:35,402 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:56:35,403 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
+2016-08-11 15:56:43,338 [FILE] ERROR com.lightfight.game.logback.LogbackTest.87 - error
+2016-08-11 15:56:43,339 [FILE] ERROR com.lightfight.game.logback.LogbackTest.89 - isErrorEnabled
