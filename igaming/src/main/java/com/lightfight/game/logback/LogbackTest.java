@@ -16,6 +16,7 @@ public class LogbackTest {
 
 	// 注意这个logger不是slf4j的logger
 	private static final Logger LOG = (Logger) LoggerFactory.getLogger(LogbackTest.class);
+
 	public static void init() {
 		LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
 		JoranConfigurator configurator = new JoranConfigurator();
@@ -26,7 +27,7 @@ public class LogbackTest {
 		} catch (JoranException e) {
 			e.printStackTrace();
 		}
-		
+
 		StatusPrinter.print(lc);
 
 		LOG.info("LogbackConfig init successfully!");
@@ -58,15 +59,15 @@ public class LogbackTest {
 			LOG.setLevel(Level.WARN);
 		} else if (cmd[0].equals("error")) {
 			LOG.setLevel(Level.ERROR);
-		}else if (cmd[0].equals("stdout")) {
+		} else if (cmd[0].equals("stdout")) {
 			Logger log = (Logger) LoggerFactory.getLogger("root");
-			ConsoleAppender<?> std = (ConsoleAppender<?>)log.getAppender("STDOUT");
+			ConsoleAppender<?> std = (ConsoleAppender<?>) log.getAppender("STDOUT");
 			if (cmd[1].equals("1")) {
 				std.start();
-			}else {
+			} else {
 				std.stop();
 			}
-			
+
 		}
 		// TRACE < DEBUG < INFO < WARN < ERROR
 		LOG.debug("debug");
