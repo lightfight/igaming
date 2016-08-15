@@ -1,4 +1,4 @@
-package com.lightfight.game.lock;
+package com.lightfight.game.uc;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
