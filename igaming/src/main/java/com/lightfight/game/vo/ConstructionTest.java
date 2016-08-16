@@ -1,11 +1,8 @@
-package com.lightfight.game;
+package com.lightfight.game.vo;
 
 import org.junit.Test;
 
-import com.lightfight.game.vo.HeroVO;
-import com.lightfight.game.vo.MonsterVO;
-
-public class Game {
+public class ConstructionTest {
 
 	/**
 	 * 看看有参构造方法会不会调用无参数构造方法

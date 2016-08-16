@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class LockTest implements Runnable {
+public class ReadGreenLightTest implements Runnable {
 
     private int tnum = 1;// 线程编号,Thread Number
 
@@ -14,7 +14,7 @@ public class LockTest implements Runnable {
     private Condition greenCon = lock.newCondition();
 
     public static void main(String[] args) {
-        new LockTest().run();
+        new ReadGreenLightTest().run();
     }
 
     @Override

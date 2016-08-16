@@ -1,4 +1,4 @@
-package com.lightfight.game;
+package com.lightfight.game.lang;
 
 import org.junit.Test;
 
