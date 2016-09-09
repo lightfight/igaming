@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd"
+	default-lazy-init="false">
+	<bean id="httpMsgRivceHandler" class="com.common.net.mina.http.HttpMsgRivceHandler">
+		<property name="httphandlerCtx" ref="httphandlerCtx"></property>
+	</bean>
+	<bean id="httpCodecFilter" class="org.apache.mina.filter.codec.ProtocolCodecFilter">
+		<constructor-arg>
+			<bean class="com.common.net.mina.http.HttpCodecFactory" />
+		</constructor-arg>
+	</bean>
+	
+    <!-- The filter chain. -->
+    <bean id="httpFilterChainBuilder" class="org.apache.mina.core.filterchain.DefaultIoFilterChainBuilder">
+    	<property name="filters">
+          <map>
+         	<entry key="httpCodecFilter" value-ref="httpCodecFilter"/>
+         	<entry key="httpexecutorFilter" value-ref="executorFilter"/>
+      	  </map>
+    	</property>
+    </bean>
+     
+    <bean id="httpIoAcceptor" class="org.apache.mina.transport.socket.nio.NioSocketAcceptor" destroy-method="unbind">
+	    <property name="defaultLocalAddress" value="${http.port}" />
+	    <property name="handler" ref="httpMsgRivceHandler" />
+	    <property name="filterChainBuilder" ref="httpFilterChainBuilder"/>
+	    <!--<property name="backlog" value = "2000"></property>--><!--设置主服务监听端口的监听队列的最大值为2000，如果当前已经有2000个连接，再新的连接来将被服务器拒绝-->
+	</bean>
+	
+	<import resource="applicationContext-http.xml"/>
+</beans>

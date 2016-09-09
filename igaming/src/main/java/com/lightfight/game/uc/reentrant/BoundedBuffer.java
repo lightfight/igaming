@@ -15,7 +15,7 @@ public class BoundedBuffer {
 	final Lock lock = new ReentrantLock();
 	final Condition notFull = lock.newCondition();
 	final Condition notEmpty = lock.newCondition();
-
+	
 	final Integer[] items = new Integer[5];
 	
 	int putptr, takeptr, count;

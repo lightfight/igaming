@@ -17,6 +17,13 @@ import com.lightfight.game.vo.Fighter;
  */
 public class GameTest {
 	
+	@Test
+	public void getClazzName(){
+		String clazzName = getClass().getName();
+		System.out.println(clazzName);
+		System.out.println(clazzName.substring(clazzName.lastIndexOf('.') + 1, clazzName.length()));
+	}
+	
 	/**
 	 * 重写compare看看升序或者降序
 	 */
