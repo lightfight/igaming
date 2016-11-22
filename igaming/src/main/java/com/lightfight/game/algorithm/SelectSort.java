@@ -1,6 +1,8 @@
 package com.lightfight.game.algorithm;
 
 import java.util.Arrays;
+import java.util.Map.Entry;
+import java.util.TreeMap;
 
 import org.junit.Test;
 
@@ -32,6 +34,19 @@ public class SelectSort {
 		int tempValue = arr[oneIndex];
 		arr[oneIndex] = arr[anotherIndex];
 		arr[anotherIndex] = tempValue;
+	}
+	
+	@Test
+	public void testTreeMap(){
+		TreeMap<String, String> data = new TreeMap<>();
+		data.put("appid", "a");
+		data.put("attach", "支付测试attach");
+		data.put("body", "JSAPI支付测试");
+		data.put("mch_id", "mch");
+		
+		for (Entry<String, String> item : data.entrySet()) {
+			System.out.println(item.getKey());
+		}
 	}
 
 }

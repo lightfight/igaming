@@ -16,31 +16,57 @@
 
 
 	<!-- 按照时间进行滚动,如果时间[yyyy-MM-dd-HH]不存在就会新创建一个文件,可以达到每个小时[yyyy-MM-dd-HH],每天[yyyy-MM-dd]创建一个文件 -->
-	<appender name="runtimeLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>logs/runtimeLog.log</file>
+	<appender name="sizeAndTime" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/sizeAndTime.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>logs/runtimeLog-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+			<fileNamePattern>logs/sizeAndTime-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
 				<maxFileSize>10MB</maxFileSize>
 			</timeBasedFileNamingAndTriggeringPolicy>
 		</rollingPolicy>
 
 		<encoder>
-			<pattern>%date [FILE] %-5level %logger.%L - %msg%n</pattern>
+			<pattern>%date [FILE] %-5level %logger.%M.%L - %msg%n</pattern>
 		</encoder>
+	</appender>
 
+	<appender name="size" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/size.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>logs/size.%i.log</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>100000</maxIndex>
+		</rollingPolicy>
+
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>100KB</maxFileSize>
+		</triggeringPolicy>
+		<encoder>
+			<pattern>%date [%thread] %-5level %logger.%M.%L - %msg%n</pattern>
+		</encoder>
 	</appender>
 	
-	<logger name="org.springframework" level="ERROR"/>
-	
+	<appender name="syslog" class="com.lightfight.game.logback.AppSyslogAppender">
+        <syslogHost>127.0.0.1</syslogHost>
+        <facility>LOCAL6</facility>
+        <suffixPattern>%date [%thread] %-5level %logger.%M.%L - %msg%n</suffixPattern>
+    </appender>
+
+	<logger name="org.springframework" level="ERROR" />
+	<logger name="ch.qos.logback" level="DEBUG" />
+
 	<!-- 根的等级,和输出参考 -->
 	<root level="ERROR">
 		<appender-ref ref="STDOUT" />
 	</root>
 
 	<!-- 配置每一个命名空间的输出等级 -->
-	<logger name="com.lightfight" level="INFO" additivity="true">
-		<appender-ref ref="runtimeLog" />
+	<logger name="com.lightfight" level="DEBUG" additivity="true">
+		<appender-ref ref="sizeAndTime" />
+	</logger>
+	
+	<logger name="ch.qos.logback" level="DEBUG">
+		<appender-ref ref="sizeAndTime" />
 	</logger>
 
 </configuration>
