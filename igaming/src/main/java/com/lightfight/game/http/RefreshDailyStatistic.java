@@ -1,8 +1,6 @@
 package com.lightfight.game.http;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -36,31 +34,10 @@ public class RefreshDailyStatistic {
 				CloseableHttpResponse response = httpclient.execute(httpGet);
 				
 				InputStream is = response.getEntity().getContent();
-				String html = getInputStreamContent(is);
+				String html = HttpUtil.getInputStreamContent(is);
 				System.out.println(html);
 			}
 		}
 	}
-	
-	/**
-	 * 获取输入流内容
-	 * 
-	 * @param in
-	 * @return
-	 * @throws Exception
-	 */
-	public static String getInputStreamContent(InputStream in) throws Exception{
-		BufferedReader reader = new BufferedReader(new InputStreamReader(in, "UTF-8"));
 
-		StringBuilder sb = new StringBuilder();
-		String line = reader.readLine();
-		while (line != null) {
-			sb.append(line);
-			line = reader.readLine();
-		}
-		reader.close();
-		in.close();
-		
-		return sb.toString();
-	}
 }

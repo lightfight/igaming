@@ -4,7 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.junit.Assume;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class StringTest {
 
@@ -17,10 +20,16 @@ public class StringTest {
 		String exToken = "abc-1001"; // 扩展的token
 		String[] splitedExToken = exToken.split("-");
 
-		System.out.println(splitedExToken.length);
-		for (String item : splitedExToken) {
-			System.out.println(item);
-		}
+//		System.out.println(splitedExToken.length);
+//		for (String item : splitedExToken) {
+//			System.out.println(item);
+//		}
+		
+		Assume.assumeTrue(splitedExToken[0].equals("abc"));
+		Assume.assumeTrue(splitedExToken[1].equals("1001"));
+		Assume.assumeFalse(splitedExToken[1].equals("1001"));
+		
+		assertTrue("GOOD",false);
 	}
 
 	@Test
