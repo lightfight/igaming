@@ -1,11 +1,10 @@
 package com.lightfight.game.http;
 
-import java.io.InputStream;
-
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
 import org.junit.Test;
 
 public class RefreshDailyStatistic {
@@ -13,17 +12,19 @@ public class RefreshDailyStatistic {
 	@Test
 	public void refreshDailyStatistic() throws Exception {
 
-		String filenamesCfg = "loginfo-2016-11-15.log,loginfo-2016-11-16.log,loginfo-2016-11-17.log,loginfo-2016-11-18.log,loginfo-2016-11-19.log,loginfo-2016-11-20.log";
+		String filenamesCfg = "2016-12-27,2016-12-28,2016-12-29,2016-12-30,2016-12-31,2017-01-01,2017-01-02,2017-01-03,2017-01-04";
 
-		// 120.26.4.146:81/cron/day/date/20161108/game_name/xiaomi
 		String[] platforms = { "xiaomi", "ea" };
-		String host = "http://xx.com/cron/day/date/";
+		
+//		String host = "http://120.26.4.146:81/cron/day/date/";
+		String host = "http://120.26.4.146/cron/day/date/";
+//		String host = "http://xx.com/cron/day/date/";
 		
 		CloseableHttpClient httpclient = HttpClients.custom().build();
 
 		String[] filenames = filenamesCfg.split(",");
 		for (String item : filenames) {
-			String date = item.substring(item.indexOf("-") + 1, item.indexOf(".")).replace("-", "");
+			String date = item.replace("-", "");
 
 			String refreshUrl = host + date + "/game_name/";
 			for (String platform : platforms) {
@@ -33,8 +34,7 @@ public class RefreshDailyStatistic {
 				HttpGet httpGet = new HttpGet(refreshPlatformUrl);
 				CloseableHttpResponse response = httpclient.execute(httpGet);
 				
-				InputStream is = response.getEntity().getContent();
-				String html = HttpUtil.getInputStreamContent(is);
+				String html = EntityUtils.toString(response.getEntity());
 				System.out.println(html);
 			}
 		}
