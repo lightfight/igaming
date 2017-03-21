@@ -1,8 +1,9 @@
 package com.lightfight.game.lang;
 
-import java.util.Calendar;
-
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.Calendar;
 
 public class MixTest {
 	
@@ -28,6 +29,18 @@ public class MixTest {
 		int intDate = year * 10000 + month * 100 + day;
 		
 		System.out.println(intDate);
+	}
+
+	@Test
+	public void testIntArrToString(){
+		int[] arr = {1,2,3,};
+		System.out.println(arr.toString()); //
+		System.out.println(Arrays.toString(arr));
+		/**
+		 * output<BR/>
+		 * [I@5ec60ee2
+		 * [1, 2, 3]
+		 */
 	}
 
 }

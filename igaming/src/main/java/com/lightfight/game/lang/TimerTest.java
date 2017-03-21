@@ -25,6 +25,6 @@ public class TimerTest {
 				System.out.println(count++);
 			}
 		}, 1000, 1000);
-	
+
 	}
 }

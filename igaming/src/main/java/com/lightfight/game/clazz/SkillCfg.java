@@ -11,9 +11,12 @@ public class SkillCfg extends Cfg{
 
     public final int type;
 
-    public SkillCfg(int cfgID, int type) {
+    public final String name;
+
+    public SkillCfg(int cfgID, int type, String name) {
         super(cfgID);
         this.type = type;
+        this.name = name;
     }
 
     @Override
