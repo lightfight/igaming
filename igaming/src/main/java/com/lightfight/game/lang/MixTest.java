@@ -6,6 +6,19 @@ import java.util.Arrays;
 import java.util.Calendar;
 
 public class MixTest {
+
+	@Test
+	public void testBitCalu(){
+		int src = 2;
+		System.out.println(~src); // ~取反运算,这个涉及到[整数--转(绝对值取反加1)-->二进制]和[二进制--转(减1取反)-->整数]
+
+		/**
+		 * output:
+		 * -3,2
+		 * 2,-3
+		 *
+		 */
+	}
 	
 	
 	/**

@@ -1,4 +1,4 @@
-package com.lightfight.game.clazz;
+package com.lightfight.game.lang.constructor;
 
 import org.junit.Test;
 

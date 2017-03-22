@@ -1,4 +1,4 @@
-package com.lightfight.game.clazz;
+package com.lightfight.game.lang.constructor;
 
 /**
  * 描述: </BR>

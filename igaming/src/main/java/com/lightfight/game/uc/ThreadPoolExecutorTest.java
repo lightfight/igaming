@@ -33,14 +33,14 @@ public class ThreadPoolExecutorTest {
      SHUTDOWN=000
      STOP=001
      TIDYING=010
-     TERMINATED=110
+     TERMINATED=011
      */
 
     @Test
     public void testRunState(){
         System.out.println(RUNNING);
-        int value = ctlOf(RUNNING, 0);
-        System.out.println(value);
+        int runValue = ctlOf(RUNNING, 0);
+        System.out.println(runValue);
     }
 
     // Packing and unpacking ctl
