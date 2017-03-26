@@ -1,0 +1,24 @@
+{
+  "_id": "0601539",
+  "masterId": "3_14",
+  "masterCount": [
+    20,
+    19,
+    14,
+    21,
+    21
+  ],
+  "trainCount": 90,
+  "trainExp": 90,
+  "generalTrain": 2,
+  "seniorTrain": 2,
+  "devilTrain": 0,
+  "blood": 2610,
+  "attack": 276,
+  "defence": 102,
+  "luck": 183,
+  "tenacity": 51,
+  "harm": 206,
+  "re_harm": 100,
+  "agile": 54
+}
