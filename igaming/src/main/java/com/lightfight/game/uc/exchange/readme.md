@@ -73,3 +73,53 @@ DruidDataSource支持哪些数据库？
     </tr>
 </table>
 
+<table>
+<tr>
+  <td>姓名</td>
+  <td>Bill Gates</td>
+</tr>
+<tr>
+  <td rowspan="2">电话</td>
+  <td>555 77 854</td>
+</tr>
+<tr>
+  <td>555 77 855</td>
+</tr>
+</table>
+
+## 有多个分类的情况,主要使用**rowspan**
+<table>
+    <tr>
+        <td>部位</td>
+        <td>属性类型</td>
+        <td>属性值</td>
+    </tr>
+    <tr>
+        <td rowspan="2">1</td>
+        <td>1</td>
+        <td>10</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>20</td>
+    </tr>
+    <tr>
+        <td rowspan="2">2</td>
+        <td>1</td>
+        <td>30</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>40</td>
+    </tr>
+    <tr>
+        <td rowspan="2">3</td>
+        <td>1</td>
+        <td>50</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>60</td>
+    </tr>
+</table>
+
