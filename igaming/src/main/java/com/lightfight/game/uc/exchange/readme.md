@@ -88,38 +88,14 @@ DruidDataSource支持哪些数据库？
 </table>
 
 ## 有多个分类的情况,主要使用**rowspan**
+感觉还是把标签一行一行的写可读性更高
 <table>
-    <tr>
-        <td>部位</td>
-        <td>属性类型</td>
-        <td>属性值</td>
-    </tr>
-    <tr>
-        <td rowspan="2">1</td>
-        <td>1</td>
-        <td>10</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>20</td>
-    </tr>
-    <tr>
-        <td rowspan="2">2</td>
-        <td>1</td>
-        <td>30</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>40</td>
-    </tr>
-    <tr>
-        <td rowspan="2">3</td>
-        <td>1</td>
-        <td>50</td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>60</td>
-    </tr>
+    <tr><td>部位</td><td>属性类型</td><td>属性值</td></tr>
+    <tr><td rowspan="2">1</td><td>1</td><td>10</td></tr>
+    <tr><td>2</td><td>20</td></tr>
+    <tr><td rowspan="2">2</td><td>1</td><td>30</td></tr>
+    <tr><td>3</td><td>40</td></tr>
+    <tr><td rowspan="2">3</td><td>1</td><td>50</td></tr>
+    <tr><td>4</td><td>60</td></tr>
 </table>
 
