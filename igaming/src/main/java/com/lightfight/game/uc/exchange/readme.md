@@ -18,7 +18,7 @@
 
 ## v3
 两个lock[putLock,takeLock]，每个lock产生一个condition[putLock对应notFull,takeLock对应notEmpty]
->java.util.concurrent.LinkedBlockingQueue
+> java.util.concurrent.LinkedBlockingQueue
 
 ## v4
 直接使用LinkedBlockingQueue
@@ -26,4 +26,50 @@
 
 ## v5
 多个生产者,一个仓库,多个消费者
+
+## 测试表格
+DruidDataSource支持哪些数据库？
+理论上说，支持所有有jdbc驱动的数据库。实际测试过的有
+<table>
+    <tr>
+        <td>数据库</td>
+        <td>支持状态</td>
+    </tr>
+    <tr>
+        <td>mysql</td>
+        <td>支持，大规模使用</td>
+    </tr>
+    <tr>
+        <td>oracle</td>
+        <td>支持，大规模使用</td>
+    </tr>
+    <tr>
+        <td>sqlserver</td>
+        <td>支持</td>
+    </tr>
+    <tr>
+        <td>postgres</td>
+        <td>支持</td>
+    </tr>
+    <tr>
+        <td>db2</td>
+        <td>支持</td>
+    </tr>
+    <tr>    
+        <td>h2</td>
+        <td>支持</td>
+    </tr>
+    <tr>
+        <td>derby</td>
+        <td>支持</td>
+    </tr>
+    <tr>
+        <td>sqlite</td>
+        <td>支持</td>
+    </tr>
+    <tr>
+        <td>sybase</td>
+        <td>支持</td>
+    </tr>
+</table>
 
