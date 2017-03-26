@@ -88,7 +88,7 @@ DruidDataSource支持哪些数据库？
 </table>
 
 ## 有多个分类的情况,主要使用
-感觉还是把标签一行一行的写可读性更高
+感觉还是把标签一行一行的写`可读性更高`,`逻辑分析更强`
 * rowspan
 
 <table>
@@ -104,9 +104,30 @@ DruidDataSource支持哪些数据库？
 * colspan
 
 <table>
-    <tr><td>部位</td><td colspan="2">1</td><td colspan="2">2</td><td colspan="2">3</td></tr>
-    <tr><td>属性类型</td><td>1</td><td>2</td><td>1</td><td>3</td><td>1</td><td>4</td></tr>
-    <tr><td>属性值</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td><td>60</td></tr>
+    <tr align="center"><td>部位</td><td colspan="2" >1</td><td colspan="2">2</td><td colspan="2">3</td></tr>
+    <tr align="center"><td>属性类型</td><td>1</td><td>2</td><td>1</td><td>3</td><td>1</td><td>4</td></tr>
+    <tr align="center"><td>属性值</td><td>10</td><td>20</td><td>30</td><td>40</td><td>50</td><td>60</td></tr>
 </table>
 
+* 使用横竖线
+
+| 部位 | 属性类型 | 属性值|
+| ----| --------| ------|
+| a   | b       | c     |
+
+
+ProtoBuff
+
+| Language                             | Source                                                |
+|--------------------------------------|-------------------------------------------------------|
+| C++ (include C++ runtime and protoc) | [src](src)                                            |
+| Java                                 | [java](java)                                          |
+| Python                               | [python](python)                                      |
+| Objective-C                          | [objectivec](objectivec)                              |
+| C#                                   | [csharp](csharp)                                      |
+| JavaNano                             | [javanano](javanano)                                  |
+| JavaScript                           | [js](js)                                              |
+| Ruby                                 | [ruby](ruby)                                          |
+| Go                                   | [golang/protobuf](https://github.com/golang/protobuf) |
+| PHP                                  | [php](php)                                            |
 
