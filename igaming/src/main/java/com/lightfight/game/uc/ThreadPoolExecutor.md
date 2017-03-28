@@ -8,6 +8,7 @@
 1. [Java并发包源码学习之线程池（一）ThreadPoolExecutor源码分析](http://www.cnblogs.com/zhanjindong/p/java-concurrent-package-ThreadPoolExecutor.html)
 2. [浅谈java线程池](https://my.oschina.net/xionghui/blog/494004)
 3. [ThreadPoolExecutor源码详解 ](https://my.oschina.net/xionghui/blog/494698)
+4. [让ThreadPoolExecutor的workQueue占满时自动阻塞](http://www.aichengxu.com/other/6569886.htm)
 
 本文是对上面文章的一个整合以及自己的理解和扩展，_主要偏基础_
 
@@ -309,6 +310,7 @@ runWorker
 
 拒绝策略
 -----
+参看文章：[让ThreadPoolExecutor的workQueue占满时自动阻塞](http://www.aichengxu.com/other/6569886.htm)
 >如何在ThreadPoolExecutor的workQueue全满的情况下，
 使得execute()方法能block在那里，一直等到有资源了，再继续提交task?
 
@@ -472,6 +474,53 @@ public void put(E e) throws InterruptedException {
     }
     if (c == 0)
         signalNotEmpty();
+}
+```
+
+用子类重写offer方法
+--
+`getQueue()`带来的风险
+- ThreadPoolExecutor的API不建议这样做(比如在拒绝策略中获取workQueue向其中put)
+- 可能导致死锁
+
+```java
+/**
+ * Returns the task queue used by this executor. Access to the
+ * task queue is intended primarily for debugging and monitoring.
+ * This queue may be in active use.  Retrieving the task queue
+ * does not prevent queued tasks from executing.
+ *
+ * @return the task queue
+ */
+public BlockingQueue<Runnable> getQueue() {
+    return workQueue;
+}
+```
+可见，API已经说明了：getQueue()主要是用于调试和监控
+
+**让offer方法变成阻塞的,直接在offer方法中调用put**
+
+>由于submit()是调用workQueue的offer()方法来添加task的，而offer()是非阻塞的，
+所以，如果我们自己实现一个BlockingQueue，其offer()方法是阻塞的，
+那么，就可以用它和ThreadPoolExecutor配合，来实现submit()方法在workQueue满时的阻塞效果了
+
+```java
+public class LimitedQueue<E> extends LinkedBlockingQueue<E> {
+  public LimitedQueue(int maxSize) {
+    super(maxSize);
+  }
+
+  @Override
+  public boolean offer(E e) {
+    // turn offer() and add() into a blocking calls (unless interrupted)
+    try {
+      put(e);
+      return true;
+    } catch (InterruptedException ie) {
+      Thread.currentThread().interrupt();
+    }
+    return false;
+  }
 }
 ```
 
