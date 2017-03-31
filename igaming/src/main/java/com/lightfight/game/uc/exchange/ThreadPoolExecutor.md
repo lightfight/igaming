@@ -524,7 +524,7 @@ public class LimitedQueue<E> extends LinkedBlockingQueue<E> {
 }
 ```
 
-在队列为空的情况下,ThreadPool会不会清除空闲线程?
+在队列为空的情况下,ThreadPool会不会清除核心线程?
 ----
 要回答这个问题，就要看runWorker方法和getTask方法，以及从队列中获取元素是否允许超时
 
