@@ -606,7 +606,8 @@ final void runWorker(Worker w) {
 
                 if (wc <= maximumPoolSize && ! (timedOut && timed))
                     break;
-                // 如果上面的if没有break就会执行这个if,再返回null,在runWorker的while循环中getTask一个null,就会结束一个worker
+                // 如果上面的if没有break就会执行这个if,再返回null,
+                // 在runWorker的while循环中getTask一个null,就会结束一个worker
                 if (compareAndDecrementWorkerCount(c)) 
                     return null;
                 c = ctl.get();  // Re-read ctl
