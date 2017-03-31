@@ -25,6 +25,16 @@ public class ExchangeTest {
             public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
                 if (!executor.isShutdown()) {
                     try {
+                        /**
+                         * Returns the task queue used by this executor. Access to the
+                         * task queue is intended primarily for debugging and monitoring.
+                         * This queue may be in active use.  Retrieving the task queue
+                         * does not prevent queued tasks from executing.
+                         *
+                         * 在拒绝策略中把元素通过阻塞的方式放入进去,但是不建议这样做
+                         * 在这个方法中的注释中已经说明了"for debugging and monitoring"打算用来调试和监控
+                         *
+                         */
                         executor.getQueue().put(r); // 重写拒绝策略,默认使用的offer(非阻塞的),所以要改为put(阻塞的)
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -43,7 +53,7 @@ public class ExchangeTest {
             });
         }
 
-        latch.await();
+        latch.await(); // 拦住等待执行结束
         service.shutdown();
         System.out.println("finished...");
     }

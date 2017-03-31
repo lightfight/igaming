@@ -30,6 +30,10 @@
 ## v6
 加入一个自定义的拒绝策略,用来控制阻塞队列的数量
 
+## v7
+在`execute`方法中调用的`offer`方法是非阻塞的(当队列满的时候会直接返回false而不是await)，所以使用一个类来
+继承一个BlockingQueue，重写它的offer，在offer中调用put
+
 ## 测试表格
 DruidDataSource支持哪些数据库？
 理论上说，支持所有有jdbc驱动的数据库。实际测试过的有

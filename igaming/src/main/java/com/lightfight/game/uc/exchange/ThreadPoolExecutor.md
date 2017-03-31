@@ -299,7 +299,7 @@ runWorker
                 int min = allowCoreThreadTimeOut ? 0 : corePoolSize;
                 if (min == 0 && ! workQueue.isEmpty())
                     min = 1;
-                // 如果还有不止1个工人(允许核心数超时)或者大于等于核心数(不允许核心数超时),那么就不需要创建工人了
+                // 如果还有不止1个工人(允许工作线程超时)或者大于等于核心数(不允许工作线程超时),那么就不需要创建工人了
                 if (workerCountOf(c) >= min) 
                     return; // replacement not needed
             }
@@ -523,6 +523,205 @@ public class LimitedQueue<E> extends LinkedBlockingQueue<E> {
   }
 }
 ```
+
+在队列为空的情况下,ThreadPool会不会清除空闲线程?
+----
+要回答这个问题，就要看runWorker方法和getTask方法，以及从队列中获取元素是否允许超时
+
+- runWorker 
+
+runWorker在while循环的条件中调用getTask
+
+```java
+final void runWorker(Worker w) {
+        Thread wt = Thread.currentThread();
+        Runnable task = w.firstTask;
+        w.firstTask = null;
+        w.unlock(); // allow interrupts
+        boolean completedAbruptly = true;
+        try {
+            while (task != null || (task = getTask()) != null) { // 在while循环的条件中调用getTask
+                w.lock();
+                // If pool is stopping, ensure thread is interrupted;
+                // if not, ensure thread is not interrupted.  This
+                // requires a recheck in second case to deal with
+                // shutdownNow race while clearing interrupt
+                if ((runStateAtLeast(ctl.get(), STOP) ||
+                     (Thread.interrupted() &&
+                      runStateAtLeast(ctl.get(), STOP))) &&
+                    !wt.isInterrupted())
+                    wt.interrupt();
+                try {
+                    beforeExecute(wt, task);
+                    Throwable thrown = null;
+                    try {
+                        task.run();
+                    } catch (RuntimeException x) {
+                        thrown = x; throw x;
+                    } catch (Error x) {
+                        thrown = x; throw x;
+                    } catch (Throwable x) {
+                        thrown = x; throw new Error(x);
+                    } finally {
+                        afterExecute(task, thrown);
+                    }
+                } finally {
+                    task = null;
+                    w.completedTasks++;
+                    w.unlock();
+                }
+            }
+            completedAbruptly = false;
+        } finally {
+            processWorkerExit(w, completedAbruptly);
+        }
+    }
+```
+
+- getTask 
+
+`getTask`中如果不是超时的,那么从队列中获取任务使用的就是`workQueue.take()`,
+而take这个方法是阻塞的(当队列为空的时候就会await),会造成while中的等待
+
+```java
+ private Runnable getTask() {
+        boolean timedOut = false; // Did the last poll() time out?
+
+        retry:
+        for (;;) {
+            int c = ctl.get();
+            int rs = runStateOf(c);
+
+            // Check if queue empty only if necessary.
+            if (rs >= SHUTDOWN && (rs >= STOP || workQueue.isEmpty())) {
+                decrementWorkerCount();
+                return null;
+            }
+
+            boolean timed;      // Are workers subject to culling?
+
+            for (;;) {
+                int wc = workerCountOf(c);
+                timed = allowCoreThreadTimeOut || wc > corePoolSize;
+
+                if (wc <= maximumPoolSize && ! (timedOut && timed))
+                    break;
+                // 如果上面的if没有break就会执行这个if,再返回null,在runWorker的while循环中getTask一个null,就会结束一个worker
+                if (compareAndDecrementWorkerCount(c)) 
+                    return null;
+                c = ctl.get();  // Re-read ctl
+                if (runStateOf(c) != rs)
+                    continue retry;
+                // else CAS failed due to workerCount change; retry inner loop
+            }
+
+            try {
+                Runnable r = timed ? // 如果允许核心线程超时
+                    workQueue.poll(keepAliveTime, TimeUnit.NANOSECONDS) :
+                    workQueue.take(); // 如果不是时间控制的,从队列中获取任务使用的就是take,而take这个方法是阻塞的
+                if (r != null)
+                    return r;
+                timedOut = true;
+            } catch (InterruptedException retry) {
+                timedOut = false;
+            }
+        }
+    }
+```
+
+- ArrayBlockingQueue.take()
+
+```java
+public E poll(long timeout, TimeUnit unit) throws InterruptedException {
+    E x = null;
+    int c = -1;
+    long nanos = unit.toNanos(timeout);
+    final AtomicInteger count = this.count;
+    final ReentrantLock takeLock = this.takeLock;
+    takeLock.lockInterruptibly();
+    try {
+        while (count.get() == 0) {
+            if (nanos <= 0)
+                return null;
+            nanos = notEmpty.awaitNanos(nanos);
+        }
+        x = dequeue();
+        c = count.getAndDecrement();
+        if (c > 1)
+            notEmpty.signal();
+    } finally {
+        takeLock.unlock();
+    }
+    if (c == capacity)
+        signalNotFull();
+    return x;
+}
+    
+ public E take() throws InterruptedException {
+        E x;
+        int c = -1;
+        final AtomicInteger count = this.count;
+        final ReentrantLock takeLock = this.takeLock;
+        takeLock.lockInterruptibly();
+        try {
+            while (count.get() == 0) { // 当队列为空的时候就会await
+                notEmpty.await();
+            }
+            x = dequeue();
+            c = count.getAndDecrement();
+            if (c > 1)
+                notEmpty.signal();
+        } finally {
+            takeLock.unlock();
+        }
+        if (c == capacity)
+            signalNotFull();
+        return x;
+    }
+```
+
+- 回答
+
+主要看是否允许核心线程超时
+
+1. 如果允许超时`allowCoreThreadTimeOut`,就会调用`poll(long timeout, TimeUnit unit)`,
+但是队列一直为空,就最多等待`keepAliveTime`这么长的时间,
+如果等待完所有等待时间还是没有数据就会返回null，然而在`runWorker`的while循环中`getTask`一个`null`,
+就会结束一个worker
+
+```java
+public E poll(long timeout, TimeUnit unit) throws InterruptedException {
+    while (count.get() == 0) { // 为空就需要倒计时
+        if (nanos <= 0) // 倒计时时间到了,就返回null
+            return null;
+        nanos = notEmpty.awaitNanos(nanos); // 倒计时
+    }
+}
+```
+
+如果在等待的过程中有数据了,必然`count.get()>0`,上面的while结束,从而获取数据
+
+2. 如果是默认的(不允许超时)，就会调用`take`，而take是阻塞的，会一直等待直到有数据
+
+3. 附上是否超时以及超时时间的说明
+
+```java
+/**
+* If false (default), core threads stay alive even when idle.
+* If true, core threads use keepAliveTime to time out waiting
+* for work.
+*/
+private volatile boolean allowCoreThreadTimeOut;
+
+/**
+* Timeout in nanoseconds for idle threads waiting for work.
+* Threads use this timeout when there are more than corePoolSize
+* present or if allowCoreThreadTimeOut. Otherwise they wait
+* forever for new work.
+*/
+private volatile long keepAliveTime;
+```
+
 
 
 
