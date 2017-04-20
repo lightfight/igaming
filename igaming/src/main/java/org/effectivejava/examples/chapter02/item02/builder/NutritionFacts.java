@@ -7,6 +7,9 @@ package org.effectivejava.examples.chapter02.item02.builder;
  * 3.从结构上讲,一个类里面包含一个`public static class Builder`，Builder的构建方法传入的是必须参数，
  * 	 非必须参数的方法名就是属性名本身，设值后返回Builder对象本身，方便再次调用
  * 4.递变过程：重叠构建器模式-->JavaBeans模式--Builder模式
+ * 5.其它框架对Builder模式的使用：
+ * 		5.1.zookeeper[org.apache.curator.framework]
+ * 		5.2.protobuff
  */
 public class NutritionFacts {
 	private final int servingSize;
