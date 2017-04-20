@@ -1,10 +1,10 @@
 package com.lightfight.game;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.lightfight.game.vo.QualifyRow;
 import org.junit.Test;
 
 import com.lightfight.game.vo.Fighter;
@@ -16,6 +16,71 @@ import com.lightfight.game.vo.Fighter;
  *
  */
 public class GameTest {
+
+	@Test
+	public void testSortRows(){
+
+		List<QualifyRow> list = new ArrayList<>();
+		list.add(new QualifyRow("060010", "apple", 6, 100, 10L));
+		list.add(new QualifyRow("060020", "apple", 6, 100, 10L));
+
+		Collections.sort(list, QualifyRow.C);
+
+		for (QualifyRow item : list) {
+			System.out.println(item);
+		}
+	}
+
+	@Test
+	public void testCompares(){
+
+		// 比较多个
+		String left = "0600010";
+		String right = "0600012";
+
+		int c = left.compareTo(right);
+
+		System.out.println(c);
+	}
+
+
+	@Test
+	public void testMax(){
+		Map<Integer, Integer> map = new LinkedHashMap<>();
+
+		map.put(128, 600);
+		map.put(64, 300);
+		map.put(32, 100);
+
+		int signupCount = 200;
+		int nextStepCount = 0;
+		for (Map.Entry<Integer, Integer> item : map.entrySet()) {
+			if (signupCount > item.getKey() && nextStepCount < item.getValue()) {
+				nextStepCount = item.getValue();
+			}
+		}
+
+		System.out.println("nextStepCount = " + nextStepCount);
+
+	}
+
+	@Test
+	public void testJsonMap(){
+		Map<Integer, Integer> map = new LinkedHashMap<>();
+
+		map.put(128, 600);
+		map.put(64, 300);
+		map.put(32, 100);
+
+		String str = JSON.toJSONString(map);
+		System.out.println(str);
+
+		map = JSONObject.parseObject(str, LinkedHashMap.class);
+		for (Map.Entry<Integer, Integer> item : map.entrySet()) {
+			System.out.println(item.getKey() + " = " + item.getValue());
+		}
+
+	}
 	
 	@Test
 	public void getClazzName(){

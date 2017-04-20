@@ -18,7 +18,7 @@ public class ExchangeTest {
          * 1.可以设置totalWorks[<,=,>]workQueueCapacity这3种情况
          * 2.可以设置workQueue = ArrayBlockingQueue与workQueue = LimitedQueue这2种情况
          *
-         * 综上看看这6中情况
+         * 综上看看这6种情况
          *
          * 结论：totalWorks[>]workQueueCapacity时只能选择LimitedQueue
          *
@@ -221,6 +221,7 @@ public class ExchangeTest {
         @Override
         public boolean offer(E e) {
             // http://www.aichengxu.com/other/6569886.htm
+            // http://stackoverflow.com/questions/4521983/java-executorservice-that-blocks-on-submission-after-a-certain-queue-size
             // turn offer() and add() into a blocking calls (unless interrupted)
             try {
                 put(e);

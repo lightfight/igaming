@@ -614,6 +614,8 @@ final void runWorker(Worker w) {
 
             for (;;) {
                 int wc = workerCountOf(c);
+                // 如果允许超时`allowCoreThreadTimeOut`或者当前worker数量大于核心线程数据
+                // 就会使用超时策略
                 timed = allowCoreThreadTimeOut || wc > corePoolSize;
 
                 if (wc <= maximumPoolSize && ! (timedOut && timed))
@@ -697,7 +699,7 @@ public E poll(long timeout, TimeUnit unit) throws InterruptedException {
 
 主要看是否允许核心线程超时
 
-1. 如果允许超时`allowCoreThreadTimeOut`,就会调用`poll(long timeout, TimeUnit unit)`,
+1. 如果允许超时`allowCoreThreadTimeOut`或者当前worker数量大于核心线程数,就会调用`poll(long timeout, TimeUnit unit)`,
 但是队列一直为空,就最多等待`keepAliveTime`这么长的时间,
 如果等待完所有等待时间还是没有数据就会返回null，然而在`runWorker`的while循环中`getTask`一个`null`,
 就会结束一个worker

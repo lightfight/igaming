@@ -1,11 +1,40 @@
 package com.lightfight.game.lang;
 
+import com.lightfight.game.lang.vo.TipExp;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Calendar;
 
 public class MixTest {
+
+	@Test
+	public void testException(){
+		try {
+			int rewards = getTaskRewards(false);
+			System.out.println(rewards);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * 尽管方法上抛出的是NullPointerException但是</BR>
+	 * @param isFinish
+	 * @return
+	 * @author caidl
+	 * @date 2017/4/9/0009 19:47
+	 */
+	private int getTaskRewards(boolean isFinish) throws TipExp {
+
+		if (isFinish) {
+
+		} else {
+			throw new NullPointerException();
+		}
+
+		return 0;
+	}
 
 	@Test
 	public void testBitCalu(){

@@ -91,7 +91,8 @@ public class ParametersConstructionTest {
             }
 
             System.out.println("----设置进构造方法的值----");
-            T t = (T)constructor.newInstance(100, 20); // 解析csv配置档的正确姿势,配置档的数据是不可以被修改的
+            Object[] initargs = {100, 20, "equipment"}; // 初始化类的构造方法参数
+            T t = (T)constructor.newInstance(initargs); // 解析csv配置档的正确姿势,配置档的数据是不可以被修改的
             System.out.println(t);
         }
     }
