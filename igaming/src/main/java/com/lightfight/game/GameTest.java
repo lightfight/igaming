@@ -1,13 +1,12 @@
 package com.lightfight.game;
 
-import java.util.*;
-
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.lightfight.game.vo.Fighter;
 import com.lightfight.game.vo.QualifyRow;
 import org.junit.Test;
 
-import com.lightfight.game.vo.Fighter;
+import java.util.*;
 
 /**
  * 不好归类的都放在这个类里面
@@ -16,6 +15,11 @@ import com.lightfight.game.vo.Fighter;
  *
  */
 public class GameTest {
+
+	@Test
+	public void testClazzName(){
+		System.out.println(GameTest.class.getName());
+	}
 
 	@Test
 	public void testContinueWinCount(){
@@ -29,6 +33,11 @@ public class GameTest {
 		System.out.println(count);
 	}
 
+	/**
+	 * 计算连胜的次数
+	 * @param masterQualifyBattle
+	 * @return
+	 */
 	private int getMasterQualifyContinueWinCount(List<Integer> masterQualifyBattle){
 
 		int count = 0;
