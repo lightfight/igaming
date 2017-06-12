@@ -19,9 +19,8 @@ public final class Redis {
     }
 
     public static void initPool(String host , int port , String auth , int db){
-        boolean TEST_ON_BORROW = true;
         JedisPoolConfig config = new JedisPoolConfig() ;
-        config.setTestOnBorrow(TEST_ON_BORROW);
+        config.setTestOnBorrow(true);
         pool = new JedisPool(config , host , port , 2000 , auth  , db) ;
         Pools.put(db , pool) ;
         System.out.println("redis 启动成功.....");

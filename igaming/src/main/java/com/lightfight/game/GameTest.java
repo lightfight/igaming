@@ -17,6 +17,20 @@ import java.util.*;
 public class GameTest {
 
 	@Test
+	public void testSublist(){
+		int count = 3;
+		List<Integer> players = Arrays.asList(1,2,3,4,5,6);
+
+		System.out.println(Arrays.toString(players.toArray()));
+
+		if (players.size() > count){
+			players = players.subList(players.size() - count, players.size());
+		}
+
+		System.out.println(Arrays.toString(players.toArray()));
+	}
+
+	@Test
 	public void testClazzName(){
 		System.out.println(GameTest.class.getName());
 	}
