@@ -93,7 +93,7 @@ public class QualifyRow {
     @Override
     public String toString() {
         return "QualifyRow{" +
-                "uuid='" + uuid + '\'' +
+                "pid='" + uuid + '\'' +
                 ", name='" + name + '\'' +
                 ", area=" + area +
                 ", signUpTime=" + signUpTime +

@@ -10,7 +10,7 @@
 	<!-- 控制台的标准输出 -->
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>[STDOUT]%date [%thread] %-5level %logger.%L - %msg%n</pattern>
+			<pattern>%date %highlight(%-5level) [%thread]  %c{0}.%M.%L - %msg%n</pattern>
 		</encoder>
 	</appender>
 
@@ -53,7 +53,6 @@
     </appender>
 
 	<logger name="org.springframework" level="ERROR" />
-	<logger name="ch.qos.logback" level="DEBUG" />
 
 	<!-- 根的等级,和输出参考 -->
 	<root level="ERROR">
@@ -65,7 +64,7 @@
 		<appender-ref ref="sizeAndTime" />
 	</logger>
 	
-	<logger name="ch.qos.logback" level="DEBUG">
+	<logger name="ch.qos.logback" level="ERROR">
 		<appender-ref ref="sizeAndTime" />
 	</logger>
 

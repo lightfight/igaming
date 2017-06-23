@@ -77,5 +77,17 @@ public class AkkaMain {
                 system.dispatcher(),
                 greetPrinter);
         //system.shutdown();
+
+
+        // 寻找这个actor的所有孩子
+        final ActorSelection allSelection = system.actorSelection("akka://helloakka/user/*");
+        System.out.println(" allSelection = "+  allSelection.toString());
+//        IndexedSeq<SelectionPathElement> pathes = allSelection.path();
+//        List<SelectionPathElement> list = pathes.toList();
+//        for (SelectionPathElement item : list.s) {
+//
+//        }
+//        system.provider().guardian().actorContext().children().i
+        System.out.println("allSelection.length() = " + allSelection.path().length());
     }
 }

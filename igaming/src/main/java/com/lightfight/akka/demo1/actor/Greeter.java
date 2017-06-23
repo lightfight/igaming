@@ -1,9 +1,12 @@
 package com.lightfight.akka.demo1.actor;
 
+import akka.actor.ActorRef;
 import akka.actor.UntypedActor;
 import com.lightfight.akka.demo1.model.Greet;
 import com.lightfight.akka.demo1.model.Greeting;
 import com.lightfight.akka.demo1.model.WhoToGreet;
+
+import java.util.Iterator;
 
 /**
  * 打招呼的Actor
@@ -30,5 +33,12 @@ public class Greeter extends UntypedActor {
         }
 
         else unhandled(message);
+
+        // 寻找这个actor的所有孩子
+        System.out.println("parent.path = " + getContext().parent().path());
+        Iterator<ActorRef> iterator =  getContext().getChildren().iterator();
+//        if (iterator.hasNext()) {
+//            System.out.println("child.path = " + iterator.next().path());
+//        }
     }
 }

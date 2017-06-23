@@ -121,7 +121,7 @@ public class CollectionsTest {
             StringBuilder builder = new StringBuilder();
             builder.append("score = ").append(score).append(", ");
             builder.append("signUpTime = ").append(signUpTime).append(", ");
-            builder.append("uuid = ").append(uuid).append(", ");
+            builder.append("pid = ").append(uuid).append(", ");
 
             return builder.toString();
         }

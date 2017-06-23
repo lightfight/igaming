@@ -1,9 +1,5 @@
 package com.lightfight.game.logback;
 
-import java.util.Scanner;
-
-import org.slf4j.LoggerFactory;
-
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
@@ -11,6 +7,9 @@ import ch.qos.logback.classic.joran.JoranConfigurator;
 import ch.qos.logback.core.ConsoleAppender;
 import ch.qos.logback.core.joran.spi.JoranException;
 import ch.qos.logback.core.util.StatusPrinter;
+import org.slf4j.LoggerFactory;
+
+import java.util.Scanner;
 
 public class LogbackTest {
 
@@ -23,12 +22,13 @@ public class LogbackTest {
 		configurator.setContext(lc);
 		lc.reset();
 		try {
-			configurator.doConfigure("config/logback.xml");
+		    String dir = System.getProperty("user.dir");
+			configurator.doConfigure(dir + "/igaming/config/logback.xml");
 		} catch (JoranException e) {
 			e.printStackTrace();
 		}
 
-		StatusPrinter.print(lc);
+//		StatusPrinter.print(lc);
 
 		LOG.info("LogbackConfig init successfully!");
 	}
