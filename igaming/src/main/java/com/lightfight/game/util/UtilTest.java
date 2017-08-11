@@ -2,17 +2,26 @@ package com.lightfight.game.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.junit.Test;
 
 public class UtilTest {
+
+	@Test
+	public void testQueue(){
+		Queue<Integer> queue = new ArrayDeque<>();
+
+
+		queue.add(1);
+		queue.add(2);
+		queue.add(3);
+
+		System.out.println(queue.poll());
+		System.out.println(queue.poll());
+		System.out.println(queue.poll());
+
+	}
 	
 	@Test
 	public void testListAddAll(){

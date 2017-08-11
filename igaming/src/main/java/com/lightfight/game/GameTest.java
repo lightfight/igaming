@@ -16,6 +16,77 @@ import java.util.*;
  */
 public class GameTest {
 
+
+	@Test
+	public void testLastCouple(){
+
+		String master_couple_step = "master:couple:step:";
+
+		Set<String> keys = new HashSet<>();
+		keys.add(master_couple_step + 7);
+		keys.add(master_couple_step + 8);
+		keys.add(master_couple_step + 9);
+		keys.add(master_couple_step + 10);
+
+		sortByString(master_couple_step, keys);
+		sortByInt(master_couple_step, keys);
+
+	}
+
+	/**
+	 * 按照string排序
+	 * @param master_couple_step
+	 * @param keys
+	 */
+	private void sortByInt(String master_couple_step, Set<String> keys){
+		// ## 取出step的int值
+		List<Integer> list = new ArrayList<>();
+		int len = master_couple_step.length();
+		for (String key : keys) {
+			String _step = key.substring(len);
+			list.add(Integer.valueOf(_step));
+		}
+
+		System.out.println("bef : " + Arrays.toString(list.toArray()));
+
+		// ## 按照step的int值排序
+		Collections.sort(list);
+
+		System.out.println("aft : " + Arrays.toString(list.toArray()));
+
+		// ## 刷新最后两个
+		int _count = 2;
+		int count = Math.min(_count, list.size());
+		for (int i = 0; i < count; i++) {
+			Integer _step = list.get(list.size() - count + i);
+			System.out.println("int step = " + _step);
+		}
+	}
+	/**
+	 * 按照string排序
+	 * @param master_couple_step
+	 * @param keys
+	 */
+	private void sortByString(String master_couple_step, Set<String> keys){
+		// ## 按照string排序
+		List<String> list = new ArrayList<>(keys);
+		System.out.println("bef : " + Arrays.toString(list.toArray()));
+
+		Collections.sort(list);
+
+		System.out.println("aft : " + Arrays.toString(list.toArray()));
+
+		// ## 刷新最后两个
+		int _count = 2;
+		int count = Math.min(_count, list.size());
+		for (int i = 0; i < count; i++) {
+			String key = list.get(list.size() - count + i);
+			String _step = key.substring(master_couple_step.length());
+			int step = Integer.valueOf(_step);
+			System.out.println("string step = " + step);
+		}
+	}
+
 	@Test
 	public void testSublist(){
 		int count = 3;
