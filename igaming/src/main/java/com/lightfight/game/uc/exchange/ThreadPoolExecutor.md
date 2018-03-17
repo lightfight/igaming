@@ -597,7 +597,7 @@ final void runWorker(Worker w) {
 
 ```java
  private Runnable getTask() {
-        boolean timedOut = false; // Did the last poll() time out?
+        boolean timedOut = false; // Did the last poll() time out? 工人是否被淘汰
 
         retry:
         for (;;) {
@@ -720,6 +720,7 @@ public E poll(long timeout, TimeUnit unit) throws InterruptedException {
 
 3. 附上是否超时以及超时时间的说明
 
+
 ```java
 /**
 * If false (default), core threads stay alive even when idle.
@@ -736,6 +737,7 @@ private volatile boolean allowCoreThreadTimeOut;
 */
 private volatile long keepAliveTime;
 ```
+
 
 
 

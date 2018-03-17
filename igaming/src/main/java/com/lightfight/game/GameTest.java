@@ -18,6 +18,29 @@ public class GameTest {
 
 
 	@Test
+	public void testNanotime() throws InterruptedException {
+
+		long nanoTime = System.nanoTime(); // 纳秒
+
+		/*
+
+		协调世界时，又称世界标准时间或世界协调时间，简称UTC(Universal Time Coordinated)
+		是最主要的世界时间标准，其以原子时秒长为基础，在时刻上尽量接近于格林尼治标准时间
+
+		 */
+		long millTime = System.currentTimeMillis();
+
+		System.out.println("nanoTime = " + nanoTime);
+		System.out.println("millTime = " + millTime);
+
+		Thread.sleep(5);
+
+		System.out.println(System.nanoTime() - nanoTime);
+		System.out.println(System.currentTimeMillis() - millTime);
+	}
+
+
+	@Test
 	public void testLastCouple(){
 
 		String master_couple_step = "master:couple:step:";
