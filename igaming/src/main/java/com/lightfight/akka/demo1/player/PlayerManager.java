@@ -48,7 +48,7 @@ public final class PlayerManager {
     public static final ActorRef createBus(String pid){
         final Timeout timeout = new Timeout(Duration.create(5, TimeUnit.SECONDS));
         try {
-            final Future<Object> future = Patterns.ask(PLAYER_HUB , new PlayerHubMessage.Create(pid) , timeout) ;
+            final Future<Object> future = Patterns.ask(PLAYER_HUB, new PlayerHubMessage.Create(pid), timeout);
             ActorRef bus = (ActorRef) Await.result(future, timeout.duration());
             return bus ;
         } catch (Exception e) {

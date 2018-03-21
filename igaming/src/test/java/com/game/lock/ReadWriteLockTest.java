@@ -19,6 +19,10 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  2. 读与写互斥
  3. 写与写互斥
 
+ ## 应用时的注意点
+
+ 这里的读和写是抽象的概念，不是指具体的读和写，而是读和写互斥的概念
+
  ## 测试1：读与读不互斥
 
  ### 结论
@@ -180,8 +184,8 @@ public class ReadWriteLockTest {
         service.execute(new Runnable() {
             @Override
             public void run() {
-//                readFile(Thread.currentThread());
-                writeFile(Thread.currentThread());
+                readFile(Thread.currentThread());
+//                writeFile(Thread.currentThread());
             }
         });
 
