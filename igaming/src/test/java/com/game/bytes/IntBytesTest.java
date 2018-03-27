@@ -317,4 +317,30 @@ public class IntBytesTest {
 
         // seed = 3183
     }
+
+    /**
+     * 测试将一个int数强转为一个byte数，直接舍弃高24位，只保留低8位
+     *
+     * <pre>
+     *
+     *
+         gold = 992922
+         00000000,00001111,00100110,10011010
+         g = -102
+         10011010
+     *
+     * </pre>
+     */
+    @Test
+    public void testIntByte(){
+
+        int gold = 992922;
+//        int gold = 125;
+        System.out.println("gold = " + gold);
+        System.out.println(fullInt(gold));
+
+        byte g = (byte)gold;
+        System.out.println("g = " + g);
+        System.out.println(fullByte(g));
+    }
 }
