@@ -56,20 +56,26 @@ public class IdGenerator {
      */
     private final static int[] BASIC_NUMBERS = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-    private final static long beginTs = 1483200000000L;
+    private final static long BEGIN_TS = 1483200000000L;
 
     private long lastTs = 0L;
 
     private long processId;
-    private int processIdBits = 10;
+
+    /**
+     * 进程ID
+     */
+    private static final int PROCESS_ID_BITS = 10;
+
+    private static final int SEQUENCE_BITS = 12;
 
     private long sequence = 0L;
 
     // 10位进程ID标识
     public IdGenerator(long processId) {
-        if (processId > ((1 << processIdBits) - 1)) {
-            throw new RuntimeException("进程ID超出范围，设置位数" + processIdBits + "，最大"
-                    + ((1 << processIdBits) - 1));
+        if (processId > ((1 << PROCESS_ID_BITS) - 1)) {
+            throw new RuntimeException("进程ID超出范围，设置位数" + PROCESS_ID_BITS + "，最大"
+                    + ((1 << PROCESS_ID_BITS) - 1));
         }
         this.processId = processId;
     }
@@ -83,10 +89,9 @@ public class IdGenerator {
         if (ts < lastTs) {// 刚刚生成的时间戳比上次的时间戳还小，出错
             throw new RuntimeException("时间戳顺序错误");
         }
-        int sequenceBits = 12;
         if (ts == lastTs) {// 刚刚生成的时间戳跟上次的时间戳一样，则需要生成一个sequence序列号
             // sequence循环自增
-            sequence = (sequence + 1) & ((1 << sequenceBits) - 1);
+            sequence = (sequence + 1) & ((1 << SEQUENCE_BITS) - 1);
             // 如果sequence=0则需要重新生成时间戳
             if (sequence == 0) {
                 // 且必须保证时间戳序列往后
@@ -96,9 +101,7 @@ public class IdGenerator {
             sequence = 0L;
         }
         lastTs = ts;// 更新lastTs时间戳
-        return ((ts - beginTs) << (processIdBits + sequenceBits))
-                | (processId << sequenceBits)
-                | sequence;
+        return ((ts - BEGIN_TS) << (PROCESS_ID_BITS + SEQUENCE_BITS)) | (processId << SEQUENCE_BITS) | sequence;
     }
 
     private long nextTs(long lastTs) {
