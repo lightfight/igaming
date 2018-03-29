@@ -31,7 +31,7 @@ import java.util.Random;
  *
  * 53-64，12位，毫秒内计数器 本机内存生成，性能高
  *
- * 主要就是三部分： 时间戳，进程id，序列号 时间戳41，id10位，序列号12位
+ * 主要就是三部分： 时间戳，进程id，序列号 时间戳41，机器编号10位，序列号12位
  *
  * ## 运用
  *
@@ -73,9 +73,11 @@ public class IdGenerator {
 
     // 10位进程ID标识
     public IdGenerator(long processId) {
-        if (processId > ((1 << PROCESS_ID_BITS) - 1)) {
-            throw new RuntimeException("进程ID超出范围，设置位数" + PROCESS_ID_BITS + "，最大"
-                    + ((1 << PROCESS_ID_BITS) - 1));
+
+        int maxId = (1 << PROCESS_ID_BITS) - 1;
+
+        if (processId > maxId) {
+            throw new RuntimeException("进程ID超出范围，设置位数" + PROCESS_ID_BITS + "，最大" + maxId);
         }
         this.processId = processId;
     }
@@ -97,10 +99,15 @@ public class IdGenerator {
                 // 且必须保证时间戳序列往后
                 ts = nextTs(lastTs);
             }
+
+            System.out.println(sequence);
+
         } else {// 如果ts>lastTs，时间戳序列已经不同了，此时可以不必生成sequence了，直接取0
             sequence = 0L;
         }
         lastTs = ts;// 更新lastTs时间戳
+
+        // 时间戳 | 进程id | 序列号
         return ((ts - BEGIN_TS) << (PROCESS_ID_BITS + SEQUENCE_BITS)) | (processId << SEQUENCE_BITS) | sequence;
     }
 

@@ -24,8 +24,8 @@ public class IdGenerateTest2 {
 
         long stt = System.currentTimeMillis();
         for (int i = 0; i < 10000; i++) {
-            System.out.println(generator.next());
-//            generator.next(); // 没有控制台输出,测试的时间更快更准
+//            System.out.println(generator.next()); // 603 ms
+            generator.next(); // 没有控制台输出,测试的时间更快更准 // 389 ms
         }
 
         System.out.println((System.currentTimeMillis() - stt) + " ms");
